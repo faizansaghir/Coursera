@@ -187,7 +187,7 @@ public class CSVdata {
     public void testFileWithColdestTemperature (){
         String file=fileWithColdestTemperature();
         System.out.println("Minimum temperature was in file:"+file);
-        FileResource fr=new FileResource("Data/2014/"+file);
+        FileResource fr=new FileResource("Data/2013/"+file);
         CSVRecord rec=coldestHourInFile(fr.getCSVParser());
         System.out.println("Coldest temperature on that day was "+rec.get("TemperatureF")+"\nAll the Temperatures on the coldest day were:");
         printAllTemp(fr.getCSVParser());
