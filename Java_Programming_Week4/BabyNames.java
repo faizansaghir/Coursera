@@ -148,6 +148,8 @@ public class BabyNames {
         System.out.println("GThe gender:"+gender);
         int yos=2014;
         System.out.println("Year of search:"+yos);
+        int rank=305;
+        System.out.println("Rank to be searched:"+rank);
         
         path="us_babynames_by_year/yob";
         fileSub=".csv";
@@ -164,8 +166,8 @@ public class BabyNames {
         //int getRank=getRank(name,yob,gender);
         //System.out.println("\nRank of "+name+" in year "+yob+" is "+getRank);
         
-        //String getName=getName(450,1982,gender);
-        //System.out.println("\nRank of "+getName+" in year "+1982+" is "+450);
+        //String getName=getName(rank,yob,gender);
+        //System.out.println("\nRank of "+getName+" in year "+yob+" is "+rank);
         
         
         //FileResource fr=new FileResource(path+yob+fileSub);
