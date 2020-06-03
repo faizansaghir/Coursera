@@ -18,7 +18,7 @@ public class WordLength {
             if(!lastLetter){
                 length-=1;
             }
-            if(length<maxLength){
+            if(length<maxLength && !(length<0)){
                 counts[length]++;
             }
             else{

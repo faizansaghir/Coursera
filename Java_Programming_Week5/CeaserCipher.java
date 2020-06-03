@@ -172,21 +172,21 @@ public class CeaserCipher {
     }
     public void testEncryptTwoKeys(){
         FileResource fr=new FileResource();
-        int key1=2;
-        int key2=20;
+        int key1=17;
+        int key2=3;
         String encryptedString=encryptTwoKeys(fr.asString(),key1,key2);
         System.out.println("Encrypted Message:\n"+encryptedString+"\n");
     }
     public void testDecrypt(){
         FileResource fr=new FileResource();
-        int key=22;
+        int key=15;
         String decryptedString=decrypt(fr.asString(),key);
         System.out.println("Decrypted Message:\n"+decryptedString+"\n");
     }
     public void testDecryptTwoKey(){
         FileResource fr=new FileResource();
-        int key1=2;
-        int key2=20;
+        int key1=17;
+        int key2=3;
         String decryptedString=decryptTwoKey(fr.asString(),key1,key2);
         System.out.println("Decrypted Message:\n"+decryptedString+"\n");
     }
