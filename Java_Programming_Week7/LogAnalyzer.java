@@ -107,4 +107,53 @@ public class LogAnalyzer {
         }
         return IPs;
     }
+    public HashMap<String,ArrayList<String>> iPsForDays(){
+        HashMap<String,ArrayList<String>> dateIPMap=new HashMap<>();
+        for(LogEntry entry:records){
+            String currDate=entry.getAccessTime().toString().substring(4,10);
+            String currIP=entry.getIpAddress();
+            if(dateIPMap.containsKey(currDate)){
+                ArrayList<String> iPs=dateIPMap.get(currDate);
+                iPs.add(currIP);
+            }
+            else{
+                ArrayList<String> iP=new ArrayList<>();
+                iP.add(currIP);
+                dateIPMap.put(currDate,iP);
+            }
+        }
+        return dateIPMap;
+    }
+    public String dayWithMostIPVisits(HashMap<String,ArrayList<String>> dateIPMap){
+        int maxVisit=0;
+        String maxVisitDay="";
+        for(String date:dateIPMap.keySet()){      
+            int currNoOfIPs=dateIPMap.get(date).size();
+            if(currNoOfIPs>maxVisit){
+                maxVisit=currNoOfIPs;
+                maxVisitDay=date;
+            }
+        }
+        return maxVisitDay;
+    }
+    public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String,ArrayList<String>> dateIPMap,String date){
+        if(dateIPMap.containsKey(date)){
+            ArrayList<String> IPsOnDay=dateIPMap.get(date);
+            HashMap<String,Integer> iPVisitMap=new HashMap<>();
+            for(String ip:IPsOnDay){
+                if(iPVisitMap.containsKey(ip)){
+                    int currCount=iPVisitMap.get(ip);
+                    iPVisitMap.replace(ip,currCount+1);
+                }
+                else{
+                    iPVisitMap.put(ip,1);
+                }
+            }
+            ArrayList<String> iPsWithMostVisit=iPsMostVisits(iPVisitMap);
+            return iPsWithMostVisit;
+        }
+        else{
+            return new ArrayList<String>();
+        }
+    }
 }
