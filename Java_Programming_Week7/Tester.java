@@ -20,6 +20,33 @@ public class Tester
     public void testLogAnalyzer() {
         LogAnalyzer la=new LogAnalyzer();
         la.readFile();
+        int uniqueIPs=la.countUniqueIPs();
+        System.out.println("Number of unique IPs are:"+uniqueIPs);
+        ArrayList<String> uniqueIPsOnDay=la.uniqueIPVisitsOnDay("Mar 17");
+        System.out.println("Number of unique IPs on the day were:"+uniqueIPsOnDay.size());
+        int IPInRange=la.countUniqueIPsInRange(200,299);
+        System.out.println("Number of unique IPs in range is:"+IPInRange);
+    }
+    public void testLogAnalyzerPrintAll(){
+        LogAnalyzer la=new LogAnalyzer();
+        la.readFile();
         la.printAll();
+    }
+    public void testLogAnalyzerHigherThanNum(){
+        LogAnalyzer la=new LogAnalyzer();
+        la.readFile();
+        la.printAllHigherThanNum(400);
+    }
+    public void testLogAnalyzerCountVisitPerIP(){
+        LogAnalyzer la=new LogAnalyzer();
+        la.readFile();
+        HashMap<String,Integer> countVisit=la.countVisitsPerIP();
+        for(String ip:countVisit.keySet()){
+            System.out.println(ip+":"+countVisit.get(ip));
+        }
+        int maxVisitByIP=la.mostNumberVisitsByIP(countVisit);
+        System.out.println("Most number of visit by a single IP is:"+maxVisitByIP);
+        ArrayList<String> mostVisitIPs=la.iPsMostVisits(countVisit);
+        System.out.println("IP(s) with most visits:"+mostVisitIPs.toString());
     }
 }
